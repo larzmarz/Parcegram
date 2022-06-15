@@ -21,6 +21,7 @@ public class loginActivity extends AppCompatActivity {
         public EditText tvUsername;
         public EditText tvPassword;
         public Button btLogin;
+        public Button btSignup;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -34,6 +35,7 @@ public class loginActivity extends AppCompatActivity {
         tvUsername = findViewById(R.id.tvUsername);
         tvPassword = findViewById(R.id.tvPassword);
         btLogin = findViewById(R.id.btLogin);
+        btSignup = findViewById(R.id.btSignup);
 
         btLogin.setOnClickListener(new View.OnClickListener() {
             @Override
