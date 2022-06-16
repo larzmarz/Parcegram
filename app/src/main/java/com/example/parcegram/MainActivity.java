@@ -57,8 +57,8 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Log.i(TAG, "Button click detected!");
-                //Intent i = new Intent(MainActivity.this, FeedActivity.class);
-                //startActivity(i);
+                Intent i = new Intent(MainActivity.this, FeedActivity.class);
+                startActivity(i);
                 //i.notify();
                 //MainActivity.this.notify();
                 //TODO: make this redirect to the feed correctly
