@@ -71,5 +71,10 @@ public class loginActivity extends AppCompatActivity {
         startActivity(i);
         finish();
     }
+    private void goFeedActivity(){
+        Intent i = new Intent(loginActivity.this, FeedActivity.class);
+        startActivity(i);
+        finish();
+    }
 
 }

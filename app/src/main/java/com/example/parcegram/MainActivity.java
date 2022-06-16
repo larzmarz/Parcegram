@@ -3,6 +3,7 @@ package com.example.parcegram;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.FileProvider;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.graphics.Bitmap;
@@ -36,6 +37,7 @@ public class MainActivity extends AppCompatActivity {
     public EditText etDescription;
     public Button btTakePicture;
     public ImageView ivPostImage;
+    public Button btFeed;
     private File photoFile;
     private String photoFileName = "photo.jpg";
 
@@ -49,6 +51,19 @@ public class MainActivity extends AppCompatActivity {
         etDescription = findViewById(R.id.etDescription);
         ivPostImage = findViewById(R.id.ivPostImage);
         logout = findViewById(R.id.btLogout);
+        btFeed = findViewById(R.id.btFeed);
+
+        btFeed.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Log.i(TAG, "Button click detected!");
+                //Intent i = new Intent(MainActivity.this, FeedActivity.class);
+                //startActivity(i);
+                //i.notify();
+                //MainActivity.this.notify();
+                //TODO: make this redirect to the feed correctly
+            }
+        });
 
         btTakePicture.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -56,8 +71,7 @@ public class MainActivity extends AppCompatActivity {
                 launchCamera();
             }
         });
-
-        //queryPosts();
+        queryPosts();
         btSubmit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
