@@ -64,7 +64,14 @@ public class PostsAdapter extends RecyclerView.Adapter<PostsAdapter.ViewHolder> 
                 Glide.with(context).load(image.getUrl()).into(ivImage);
             }
         }
-
+    public void clear(){
+        posts.clear();
+        notifyDataSetChanged();
+    }
+    public void addAll(List<Post> post){
+        posts.addAll(post);
+        notifyDataSetChanged();
+    }
 
 
     }
