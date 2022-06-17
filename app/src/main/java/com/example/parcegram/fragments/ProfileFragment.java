@@ -58,6 +58,7 @@ public class ProfileFragment extends BaseFragment{
                 //take photo
                 launchCamera();
 
+
             }
         });
 

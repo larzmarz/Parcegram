@@ -9,11 +9,10 @@
         android:id="@+id/tvPassword"
         android:layout_width="385dp"
         android:layout_height="42dp"
-        android:layout_marginStart="4dp"
         android:ems="10"
         android:hint="password"
         android:inputType="textPassword"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/tvUsername"
         app:layout_constraintTop_toBottomOf="@+id/tvUsername"
         tools:text="password" />
 
@@ -49,7 +48,7 @@
         android:background="@drawable/ic_launcher_nav_logo_whiteout"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        tools:layout_editor_absoluteY="71dp" />
+        tools:layout_editor_absoluteY="83dp" />
 
     <Button
         android:id="@+id/btSignup"

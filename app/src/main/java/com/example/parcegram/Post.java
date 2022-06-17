@@ -15,6 +15,7 @@ public class Post extends ParseObject {
     public static final String KEY_USER = "user";
     public static final String KEY_CREATED_KEY = "createdAt";
     public static final String KEY_LIKEDBY_BY = "LikedBy";
+    public static final String KEY_PHOTO_PFP = "profilePhoto";
 
     public String getDescription(){
         return getString(KEY_DESCRIPTION);
@@ -22,11 +23,9 @@ public class Post extends ParseObject {
     public void setDescription(String description){
         put(KEY_DESCRIPTION, description);
     }
-
     public ParseFile getImage() {
         return getParseFile(KEY_IMAGE);
     }
-
     public void setImage(ParseFile parseFile) {
         put(KEY_IMAGE, parseFile);
     }
@@ -36,7 +35,6 @@ public class Post extends ParseObject {
     public void setUser(ParseUser user){
         put(KEY_USER, user);
     }
-
     public String getCreated(){
         return getString(KEY_CREATED_KEY);
     }
@@ -48,7 +46,6 @@ public class Post extends ParseObject {
         likesText += getLikedBy().size() == 1? " like" : " likes";
         return likesText;
     }
-
     public List<String> getLikedBy(){
         List<String> likedBy = getList(KEY_LIKEDBY_BY);
         if(likedBy == null){
@@ -59,7 +56,10 @@ public class Post extends ParseObject {
     public void setLikedBy(List<String> likedBy){
         put(KEY_LIKEDBY_BY, likedBy);
     }
-
-
-
+    public ParseFile getProfilePhoto(){
+        return getParseFile(KEY_PHOTO_PFP);
+    }
+    public void setProfilePicture(ParseFile parseFile){
+        put(KEY_PHOTO_PFP, parseFile);
+    }
 }

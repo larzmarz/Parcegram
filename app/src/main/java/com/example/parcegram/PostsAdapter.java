@@ -16,6 +16,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 import com.bumptech.glide.Glide;
+import com.parse.Parse;
 import com.parse.ParseFile;
 import com.parse.ParseUser;
 
@@ -90,10 +91,12 @@ public class PostsAdapter extends RecyclerView.Adapter<PostsAdapter.ViewHolder> 
             tvLikeCnt.setText(post.likeCountDisplayText());
             tvUserN.setText(post.getUser().getUsername());
 
+
             ParseFile image = post.getImage();
             if (image != null) {
                 Glide.with(context).load(image.getUrl()).into(ivImage);
             }
+
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
@@ -115,6 +118,7 @@ public class PostsAdapter extends RecyclerView.Adapter<PostsAdapter.ViewHolder> 
                     }else{
                         likedBy.remove(ParseUser.getCurrentUser().getObjectId());
                         post.setLikedBy(likedBy);
+                        iBLike.setColorFilter(Color.WHITE);
                     }
                     post.saveInBackground();
                     tvLikeCnt.setText(post.likeCountDisplayText());
