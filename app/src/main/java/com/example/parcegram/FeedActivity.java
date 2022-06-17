@@ -3,6 +3,7 @@ package com.example.parcegram;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 import android.os.Bundle;
 import android.util.Log;
@@ -16,6 +17,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class FeedActivity extends AppCompatActivity {
+    private SwipeRefreshLayout swipeContainer;
     public static final String TAG = "FeedActivity";
     protected PostsAdapter adapter;
     protected List<Post> allPosts;
@@ -25,7 +27,18 @@ public class FeedActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_feed);
+        swipeContainer = (SwipeRefreshLayout) findViewById(R.id.swipeContainer);
+        swipeContainer.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener(){
+            @Override
+            public void onRefresh() {
+                adapter.clear();
+                queryPosts();
+                adapter.notifyDataSetChanged();
+                swipeContainer.setRefreshing(false);
+            }
+        });
 
+        swipeContainer.setColorSchemeResources(android.R.color.holo_blue_bright);
         rvPosts = findViewById(R.id.rvPosts);
 
         allPosts = new ArrayList<>();
@@ -38,6 +51,8 @@ public class FeedActivity extends AppCompatActivity {
         // query posts from Parsegram
         queryPosts();
     }
+
+
     private void queryPosts() {
         // specify what type of data we want to query - Post.class
         ParseQuery<Post> query = ParseQuery.getQuery(Post.class);

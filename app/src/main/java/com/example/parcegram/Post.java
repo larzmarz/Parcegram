@@ -1,5 +1,6 @@
 package com.example.parcegram;
 
+import com.parse.Parse;
 import com.parse.ParseClassName;
 import com.parse.ParseFile;
 import com.parse.ParseObject;
@@ -10,9 +11,9 @@ public class Post extends ParseObject {
     public static final String KEY_DESCRIPTION = "description";
     public static final String KEY_IMAGE = "image";
     public static final String KEY_USER = "user";
+    public static final String KEY_CREATED_KEY = "createdAt";
 
     public String getDescription(){
-
         return getString(KEY_DESCRIPTION);
     }
     public void setDescription(String description){
@@ -32,4 +33,12 @@ public class Post extends ParseObject {
     public void setUser(ParseUser user){
         put(KEY_USER, user);
     }
+
+    public String getCreated(){
+        return getString(KEY_CREATED_KEY);
+    }
+    public void setCreated(ParseFile date){
+        put(KEY_CREATED_KEY, date);
+    }
+
 }

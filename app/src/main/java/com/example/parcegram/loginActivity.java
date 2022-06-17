@@ -31,7 +31,6 @@ public class loginActivity extends AppCompatActivity {
        if(ParseUser.getCurrentUser() !=null ) {
             goMainActivity();
         }
-
         tvUsername = findViewById(R.id.tvUsername);
         tvPassword = findViewById(R.id.tvPassword);
         btLogin = findViewById(R.id.btLogin);

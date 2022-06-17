@@ -1,9 +1,11 @@
 package com.example.parcegram;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -19,7 +21,14 @@ public class PostsAdapter extends RecyclerView.Adapter<PostsAdapter.ViewHolder> 
     private Context context;
     private List<Post> posts;
 
-
+    public void clear(){
+        posts.clear();
+        notifyDataSetChanged();
+    }
+    public void addAll(List<Post> post){
+        posts.addAll(post);
+        notifyDataSetChanged();
+    }
     public PostsAdapter(Context context, List<Post> posts) {
         this.context = context;
         this.posts = posts;
@@ -46,6 +55,7 @@ public class PostsAdapter extends RecyclerView.Adapter<PostsAdapter.ViewHolder> 
         private TextView tvUsername;
         private ImageView ivImage;
         private TextView tvDescription;
+        private TextView btPostD;
 
 
         public ViewHolder(@NonNull View itemView) {
@@ -53,26 +63,18 @@ public class PostsAdapter extends RecyclerView.Adapter<PostsAdapter.ViewHolder> 
             tvUsername = itemView.findViewById(R.id.tvUsername);
             ivImage = itemView.findViewById(R.id.ivImage);
             tvDescription = itemView.findViewById(R.id.tvDescription);
+            btPostD = itemView.findViewById(R.id.tvTime);
         }
 
         public void bind(Post post) {
             // Bind the post data to the view elements
             tvDescription.setText(post.getDescription());
             tvUsername.setText(post.getUser().getUsername());
+            btPostD.setText(post.getCreatedAt().toString());
             ParseFile image = post.getImage();
             if (image != null) {
                 Glide.with(context).load(image.getUrl()).into(ivImage);
             }
         }
-    public void clear(){
-        posts.clear();
-        notifyDataSetChanged();
-    }
-    public void addAll(List<Post> post){
-        posts.addAll(post);
-        notifyDataSetChanged();
-    }
-
-
     }
 }
