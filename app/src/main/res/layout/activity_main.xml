@@ -6,6 +6,42 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:minHeight="?attr/actionBarSize"
+        android:theme="@android:style/ThemeOverlay.Material.Dark.ActionBar"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:layout_editor_absoluteY="8dp"
+        tools:ignore="MissingConstraints" />
+
+    <Button
+        android:id="@+id/btLogout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="#00FFFFFF"
+        android:text="Logout"
+        android:onClick="onLogoutButton"
+        android:textColor="#9A8B8B"
+        android:textStyle="italic"
+        android:visibility="visible"
+        tools:layout_editor_absoluteX="10dp"
+        tools:layout_editor_absoluteY="8dp"
+        tools:visibility="visible"
+        tools:ignore="MissingConstraints" />
+
+    <ImageView
+        android:id="@+id/ivLogo"
+        android:layout_width="match_parent"
+        android:layout_height="58dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:srcCompat="@drawable/ic_launcher_nav_logo_whiteout"
+        tools:layout_editor_absoluteY="8dp"
+        tools:ignore="MissingConstraints" />
+
     <FrameLayout
         android:id="@+id/flContainer"
         android:layout_width="0dp"
@@ -15,7 +51,9 @@
         android:layout_marginEnd="10dp"
         app:layout_constraintBottom_toTopOf="@+id/bottom_navigation"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent" >
+
+    </FrameLayout>
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/bottom_navigation"

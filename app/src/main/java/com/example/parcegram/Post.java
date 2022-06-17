@@ -1,10 +1,12 @@
 package com.example.parcegram;
 
-import com.parse.Parse;
 import com.parse.ParseClassName;
 import com.parse.ParseFile;
 import com.parse.ParseObject;
 import com.parse.ParseUser;
+
+import java.util.ArrayList;
+import java.util.List;
 
 @ParseClassName("Post")
 public class Post extends ParseObject {
@@ -12,6 +14,7 @@ public class Post extends ParseObject {
     public static final String KEY_IMAGE = "image";
     public static final String KEY_USER = "user";
     public static final String KEY_CREATED_KEY = "createdAt";
+    public static final String KEY_LIKEDBY_BY = "LikedBy";
 
     public String getDescription(){
         return getString(KEY_DESCRIPTION);
@@ -40,5 +43,23 @@ public class Post extends ParseObject {
     public void setCreated(ParseFile date){
         put(KEY_CREATED_KEY, date);
     }
+    public String likeCountDisplayText(){
+        String likesText = String.valueOf(getLikedBy().size());
+        likesText += getLikedBy().size() == 1? " like" : " likes";
+        return likesText;
+    }
+
+    public List<String> getLikedBy(){
+        List<String> likedBy = getList(KEY_LIKEDBY_BY);
+        if(likedBy == null){
+            likedBy = new ArrayList();
+        }
+        return likedBy;
+    }
+    public void setLikedBy(List<String> likedBy){
+        put(KEY_LIKEDBY_BY, likedBy);
+    }
+
+
 
 }

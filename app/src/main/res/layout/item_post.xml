@@ -9,12 +9,12 @@
 
     <TextView
         android:id="@+id/tvUsername"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_width="338dp"
+        android:layout_height="29dp"
         android:text="TextView"
         android:textAppearance="@style/TextAppearance.AppCompat.Large"
         app:layout_constraintBottom_toTopOf="@+id/ivImage"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/ivProfile"
         tools:text="rahul" />
 
     <ImageView
@@ -28,8 +28,8 @@
 
     <TextView
         android:id="@+id/tvDescription"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_width="281dp"
+        android:layout_height="0dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/ivImage"
         tools:text="trying to look hipster" />
@@ -38,9 +38,43 @@
         android:id="@+id/tvTime"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:hint="testing now"
 
+        android:hint="testing now"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvLikeCount" />
+
+    <ImageButton
+        android:id="@+id/ibLike"
+        android:layout_width="28dp"
+        android:layout_height="30dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvDescription"
+        tools:srcCompat="@android:drawable/btn_star_big_off" />
+
+    <TextView
+        android:id="@+id/tvLikeCount"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="likes"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/ibLike" />
+
+    <TextView
+        android:id="@+id/tvUserN"
+        android:layout_width="wrap_content"
+        android:layout_height="20dp"
+        android:text="TextView"
+        app:layout_constraintEnd_toStartOf="@+id/tvDescription"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/ivImage" />
+
+    <ImageView
+        android:id="@+id/ivProfile"
+        android:layout_width="59dp"
+        android:layout_height="44dp"
+        app:layout_constraintBottom_toBottomOf="@+id/tvUsername"
+        tools:srcCompat="@tools:sample/avatars" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

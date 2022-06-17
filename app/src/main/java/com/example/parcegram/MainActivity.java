@@ -3,6 +3,7 @@ package com.example.parcegram;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 import androidx.core.content.FileProvider;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
@@ -28,6 +29,7 @@ import com.example.parcegram.fragments.PostsFragment;
 import com.example.parcegram.fragments.ProfileFragment;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.parse.FindCallback;
+import com.parse.Parse;
 import com.parse.ParseException;
 import com.parse.ParseFile;
 import com.parse.ParseQuery;
@@ -39,15 +41,24 @@ import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
     public static final String TAG = "MainActivity";
-   final FragmentManager fragmentManager = getSupportFragmentManager();
-    private BottomNavigationView bottomNavigationView;
+    final FragmentManager fragmentManager = getSupportFragmentManager();
+    public BottomNavigationView bottomNavigationView;
+    PostsFragment postsfragment = new PostsFragment();
+    ComposeFragment composeFragment = new ComposeFragment();
+    ProfileFragment profileFragment = new ProfileFragment();
 
+    public void goToProfileTab(User user){
+        profileFragment.user = user;
+        profileFragment.displayUserInfo();
+
+        bottomNavigationView.setSelectedItemId(R.id.action_profile);
+    }
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        //logout = findViewById(R.id.btLogout);
-        //btFeed = findViewById(R.id.btFeed);
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
         bottomNavigationView = findViewById(R.id.bottom_navigation);
         bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
             @Override
@@ -55,14 +66,14 @@ public class MainActivity extends AppCompatActivity {
                 Fragment fragment;
                 switch (item.getItemId()) {
                     case R.id.action_home:
-                        fragment = new PostsFragment();
+                        fragment =postsfragment;
                         break;
                     case R.id.action_compose:
-                        fragment = new ComposeFragment();
+                        fragment = composeFragment;
                         break;
                     case R.id.action_profile:
                     default:
-                        fragment = new ProfileFragment();
+                        fragment = profileFragment;
                         break;
                 }
                 fragmentManager.beginTransaction().replace(R.id.flContainer, fragment).commit();
@@ -71,4 +82,13 @@ public class MainActivity extends AppCompatActivity {
         });
         // Set default selection
         bottomNavigationView.setSelectedItemId(R.id.action_home);
-    }}
+    }
+    public void onLogoutButton(View view) {
+        //logout of account
+        ParseUser.logOut();
+        ParseUser currentUser =ParseUser.getCurrentUser();
+
+        Intent i = new Intent(this, loginActivity.class);
+        startActivity(i);
+    }
+}
