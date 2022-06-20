@@ -5,7 +5,7 @@
 Time spent: **35** hours spent in total
 
 ## User Stories
-
+**IMPORTANT:** To use the app you must sign in with one of the accounts already created, please use user: 123 pw: 123 to access the app
 The following **required** functionality is completed:
 
 - [X] User sees app icon in home screen.
@@ -30,8 +30,8 @@ The following **stretch** features are implemented:
 - [X] User can like a post and see number of likes for each post in the post details screen.
   Please list two areas of the assignment you'd like to **discuss further with your peers** during the next class (examples include better ways to implement something, how to extend your app in certain ways, etc):
 
-1.
-2.
+1. Discussing grid views a bit further
+2. 
 
 ## Video Walkthrough
 
@@ -50,7 +50,7 @@ List an 3rd party libraries, icons, graphics, or other assets you used in your a
 
 ## Notes
 
-Describe any challenges encountered while building the app.
+I ran into a couple of small issues while coding this project, from my version being incompatible and at times, some stretch features took a very long time to fully implement. 
 
 ## License
 
