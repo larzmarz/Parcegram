@@ -6,6 +6,7 @@ Time spent: **35** hours spent in total
 
 ## User Stories
 **IMPORTANT:** To use the app you must sign in with one of the accounts already created, please use user: 123 pw: 123 to access the app
+
 The following **required** functionality is completed:
 
 - [X] User sees app icon in home screen.
